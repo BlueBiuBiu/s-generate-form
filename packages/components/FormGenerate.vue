@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import { withDefaults, defineProps, reactive, ref, onMounted, watch, defineExpose } from "vue"
 import ElementComps from './ElementComps.vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElCol, ElRow, ElForm, ElFormItem } from 'element-plus'
