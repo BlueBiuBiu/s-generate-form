@@ -6,7 +6,8 @@
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "build:lib": "vite build --config ./build/lib.config.ts"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
@@ -24,6 +25,7 @@
     "unplugin-icons": "^0.14.8",
     "unplugin-vue-components": "^0.22.4",
     "vite": "^3.0.4",
+    "vite-plugin-dts": "^1.4.1",
     "vue-tsc": "^0.39.5"
   }
 }

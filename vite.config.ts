@@ -1,6 +1,5 @@
-import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -32,7 +31,8 @@ export default defineConfig({
         IconsResolver({
           prefix: 'Icon',
         }),
-      ]
+      ],
+      dts: fileURLToPath(new URL('./src/auto-imports.d.ts', import.meta.url))
     }),
 
     Components({
@@ -45,7 +45,8 @@ export default defineConfig({
         // Auto register Element Plus components
         // 自动导入 Element Plus 组件
         ElementPlusResolver(),
-      ]
+      ],
+      dts: fileURLToPath(new URL('./src/components.d.ts', import.meta.url))
     }),
 
     Icons({

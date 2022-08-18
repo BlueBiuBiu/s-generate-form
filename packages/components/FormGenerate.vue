@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="ruleFormRef" :model="form" :rules="rules" label-width="120px">
+  <el-form :model="form" ref="ruleFormRef" :rules="rules" label-width="120px">
     <div v-for="(element, index) in myArray" :key="index">
       <div class="el" v-if="element.type">
         <el-form-item v-if="element.type !== 'fence'" :label="element.title" :prop="element.dataId">
@@ -21,8 +21,8 @@
 
 <script setup lang="ts">
 import ElementComps from './ElementComps.vue'
-import type { FormRules } from 'element-plus'
-import { defineProps, reactive, ref, onMounted, watch } from "vue"
+import type { FormInstance, FormRules } from 'element-plus'
+import { ElCol, ElRow, ElForm, ElFormItem } from 'element-plus'
 
 const props = defineProps<{ customConfig: any[] }>();
 const myArray: any = reactive(props.customConfig)
@@ -31,8 +31,6 @@ const form: any = reactive({})
 const rules: any = reactive<FormRules>({})
 
 onMounted(() => {
-  console.log(props.customConfig);
-  
   props.customConfig.forEach((item: any) => {
     if (item.tasks) { // 栅栏布局里面的
       Object.keys(item.tasks).forEach((child: any) => {
@@ -46,7 +44,6 @@ onMounted(() => {
       form[item.dataId] = item.modelValue
     }
   })
-  console.log(rules)
 })
 
 watch(myArray, (newVal: any) => {
@@ -68,16 +65,15 @@ const getData = () => {
   return new Promise((resolve, reject) => {
     ruleFormRef.value.validate((valid: any) => {
       if (valid) {
-        // console.log('submit!', form)
         resolve(form)
       } else {
-        // console.log('error submit!')
         reject('error submit!')
       }
     })
   })
 }
 defineExpose({getData})
+
 </script>
 
 <style scoped>
