@@ -12,7 +12,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
     "element-plus": "^2.2.13",
-    "sky-generate-form": "^1.0.3",
+    "sky-generate-form": "^1.0.4",
     "vue": "^3.2.37"
   },
   "devDependencies": {
